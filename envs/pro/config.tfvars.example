@@ -1,0 +1,51 @@
+/*
+DO OMega Pro Infrastructure Configuration
+
+This is the template to configure the DO Omega Pro Infrastructure. This file
+contains the configuration for the project, VPC, and databases.
+*/
+
+# ---PROJECT--------------------------------------------------------------------
+project_name        = "do-omega-pro-infra"
+project_description = "DO Omega Pro Infrastructure"
+project_purpose     = "Web Application"
+
+# ---VPC------------------------------------------------------------------------
+vpc_name        = "do-omega-pro-vpc"
+vpc_region      = "blr1"
+vpc_description = "DO Omega Pro VPC"
+vpc_ip_range    = "192.168.3.0/24"
+
+# ---DATABASES------------------------------------------------------------------
+dbs_cluster_name = "do-omega-pro-dbc"
+dbs_engine       = "pg"
+dbs_size         = "db-s-1vcpu-1gb"
+dbs_region       = "blr1"
+dbs_node_count   = 1
+dbs_version      = "15"
+
+dbs_db_name = "do-omega-pro-db"
+
+dbs_firewall_rules = [
+  {
+    type  = "ip_addr"
+    value = "125.99.189.110"
+  }
+]
+
+dbs_db_user_name = "do-omega-pro-db-user"
+
+# ---K8S------------------------------------------------------------------------
+kub_cluster_name                   = "do-omega-pro-kub"
+kub_cluster_region                 = "blr1"
+kub_cluster_version                = "1.30.1-do.0"
+kub_cluster_auto_upgrade           = true
+kub_cluster_ha                     = false
+kub_cluster_default_node_pool_name = "do-omega-pro-default-node-pool"
+kub_cluster_default_node_pool_size = "s-1vcpu-2gb"
+# kub_cluster_default_node_pool_node_count     = 1
+kub_cluster_default_node_pool_auto_scale     = true
+kub_cluster_default_node_pool_min_nodes      = 1
+kub_cluster_default_node_pool_max_nodes      = 3
+kub_cluster_destroy_all_associated_resources = true
+
