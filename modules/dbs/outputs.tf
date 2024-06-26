@@ -1,3 +1,7 @@
+output "dbs_cluster_urn" {
+  value = digitalocean_database_cluster.dbc.urn
+}
+
 output "dbs_cluster_host" {
   value       = digitalocean_database_cluster.dbc.host
   description = "Database cluster host"
@@ -16,11 +20,13 @@ output "dbs_clsuter_port" {
 output "dbs_default_db_uri" {
   value       = digitalocean_database_cluster.dbc.uri
   description = "Database URI"
+  sensitive   = true
 }
 
 output "dbs_private_default_db_uri" {
   value       = digitalocean_database_cluster.dbc.private_uri
   description = "Database private URI"
+  sensitive   = true
 }
 
 output "dbs_default_db_name" {
@@ -36,9 +42,11 @@ output "dbs_default_db_user_name" {
 output "dbs_default_db_user_password" {
   value       = digitalocean_database_cluster.dbc.password
   description = "Database default user password"
+  sensitive   = true
 }
 
 output "dbs_db_user_password" {
   value       = digitalocean_database_user.db_user.password
   description = "Database user password"
+  sensitive   = true
 }

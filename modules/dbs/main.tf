@@ -6,7 +6,6 @@ resource "digitalocean_database_cluster" "dbc" {
   region               = var.dbs_region
   node_count           = var.dbs_node_count
   private_network_uuid = var.dbs_private_network_uuid
-  project_id           = var.dbs_project_id
 }
 
 resource "digitalocean_database_db" "db" {

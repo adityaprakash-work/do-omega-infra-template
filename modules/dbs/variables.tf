@@ -41,11 +41,6 @@ variable "dbs_private_network_uuid" {
   description = "UUID of the private network"
 }
 
-variable "dbs_project_id" {
-  type        = string
-  description = "ID of the project"
-}
-
 # ---DATABASE-------------------------------------------------------------------
 variable "dbs_db_name" {
   type        = string
