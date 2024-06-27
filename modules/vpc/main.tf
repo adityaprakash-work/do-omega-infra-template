@@ -6,6 +6,6 @@ resource "digitalocean_vpc" "vpc" {
 
   # DO members (resources attached to the VPC persist for some time)
   timeouts {
-    delete = "5m"
+    delete = "10m"
   }
 }

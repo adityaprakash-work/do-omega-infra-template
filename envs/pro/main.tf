@@ -41,7 +41,7 @@ module "dbs" {
 }
 
 module "kub" {
-  source                                   = "../../modules/kub"
+  source                                   = "../../modules/dok"
   do_token                                 = var.do_token
   kub_cluster_name                         = var.kub_cluster_name
   kub_cluster_region                       = var.kub_cluster_region
