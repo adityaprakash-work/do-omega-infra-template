@@ -43,9 +43,19 @@ kub_cluster_auto_upgrade           = true
 kub_cluster_ha                     = false
 kub_cluster_default_node_pool_name = "do-omega-pro-default-node-pool"
 kub_cluster_default_node_pool_size = "s-1vcpu-2gb"
+/* Auto Scaling:
+Uncomment `kub_cluster_default_node_pool_node_count` below to explicitly set the 
+node count. Comment out `kub_cluster_default_node_pool_auto_scale` in that case.
+*/
 # kub_cluster_default_node_pool_node_count     = 1
 kub_cluster_default_node_pool_auto_scale     = true
 kub_cluster_default_node_pool_min_nodes      = 1
 kub_cluster_default_node_pool_max_nodes      = 3
 kub_cluster_destroy_all_associated_resources = true
 
+# ---SOS------------------------------------------------------------------------
+spaces_access_id  = "DO00ZA23LMBP68JEV2VQ"
+spaces_secret_key = "L2FLZ+4ZABKtPecEvT0Av2DGXKjf5UOWaotvq2dD/JQ"
+sos_bucket_name   = "do-omega-pro-sos"
+sos_bucket_region = "blr1"
+sos_bucket_acl    = "public-read"

@@ -47,3 +47,30 @@ output "dbs_db_user_password" {
   description = "Database user password"
   sensitive   = true
 }
+
+
+# ---SOS------------------------------------------------------------------------
+output "sos_bucket_urn" {
+  value       = module.sos.sos_bucket_urn
+  description = "SOS bucket URN"
+}
+
+output "sos_bucket_bucket_domain_name" {
+  value       = module.sos.sos_bucket_bucket_domain_name
+  description = "SOS bucket bucket domain name"
+}
+
+output "sos_bucket_endpoint" {
+  value       = module.sos.sos_bucket_endpoint
+  description = "SOS bucket endpoint"
+}
+
+output "sos_cdn_origin" {
+  value       = module.sos.sos_cdn_origin
+  description = "SOS CDN origin"
+}
+
+output "sos_cdn_endpoint" {
+  value       = module.sos.sos_cdn_endpoint
+  description = "SOS CDN endpoint"
+}

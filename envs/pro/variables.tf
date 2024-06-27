@@ -4,6 +4,18 @@ variable "do_token" {
   sensitive   = true
 }
 
+variable "spaces_access_id" {
+  type        = string
+  description = "Access ID for accessing the Spaces bucket"
+  sensitive   = true
+}
+
+variable "spaces_secret_key" {
+  type        = string
+  description = "Secret key for accessing the Spaces bucket"
+  sensitive   = true
+}
+
 # ---PROJECT--------------------------------------------------------------------
 variable "project_name" {
   type        = string
@@ -171,4 +183,20 @@ variable "kub_cluster_destroy_all_associated_resources" {
   destroyed along with the cluster when it is destroyed.
   EOF
   default     = true
+}
+
+# ---SOSBUCKET------------------------------------------------------------------
+variable "sos_bucket_name" {
+  type        = string
+  description = "Name of the SOS bucket"
+}
+
+variable "sos_bucket_region" {
+  type        = string
+  description = "Region of the SOS bucket"
+}
+
+variable "sos_bucket_acl" {
+  type        = string
+  description = "Access control list for the SOS bucket"
 }

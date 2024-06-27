@@ -5,7 +5,8 @@ resource "digitalocean_project" "project" {
   environment = "Production"
   resources = [
     module.dbs.dbs_cluster_urn,
-    module.kub.kub_cluster_urn,
+    module.dok.kub_cluster_urn,
+    module.sos.sos_bucket_urn
   ]
 }
 
@@ -38,9 +39,10 @@ module "dbs" {
   dbs_db_name              = var.dbs_db_name
   dbs_firewall_rules       = var.dbs_firewall_rules
   dbs_db_user_name         = var.dbs_db_user_name
+  depends_on               = [module.vpc]
 }
 
-module "kub" {
+module "dok" {
   source                                   = "../../modules/dok"
   do_token                                 = var.do_token
   kub_cluster_name                         = var.kub_cluster_name
@@ -53,4 +55,15 @@ module "kub" {
   kub_cluster_default_node_pool_size       = var.kub_cluster_default_node_pool_size
   kub_cluster_default_node_pool_node_count = var.kub_cluster_default_node_pool_node_count
   kub_cluster_default_node_pool_auto_scale = var.kub_cluster_default_node_pool_auto_scale
+  depends_on                               = [module.vpc]
+}
+
+module "sos" {
+  source            = "../../modules/sos"
+  do_token          = var.do_token
+  spaces_access_id  = var.spaces_access_id
+  spaces_secret_key = var.spaces_secret_key
+  sos_bucket_name   = var.sos_bucket_name
+  sos_bucket_region = var.sos_bucket_region
+  sos_bucket_acl    = var.sos_bucket_acl
 }
