@@ -4,6 +4,6 @@ resource "digitalocean_spaces_bucket" "sos_bucket" {
   acl    = var.sos_bucket_acl
 }
 
-resource "digitalocean_cdn" "sos_cdn" {
+resource "digitalocean_cdn" "sos_bucket_cdn" {
   origin = digitalocean_spaces_bucket.sos_bucket.bucket_domain_name
 }

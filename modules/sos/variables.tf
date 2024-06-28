@@ -3,16 +3,6 @@ variable "do_token" {
   description = "DigitalOcean API token"
 }
 
-variable "spaces_access_id" {
-  type        = string
-  description = "Access ID for accessing the Spaces bucket"
-}
-
-variable "spaces_secret_key" {
-  type        = string
-  description = "Secret key for accessing the Spaces bucket"
-}
-
 # ---SOSBUCKET------------------------------------------------------------------
 variable "sos_bucket_name" {
   type        = string

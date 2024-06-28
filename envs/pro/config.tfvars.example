@@ -11,10 +11,11 @@ project_description = "DO Omega Pro Infrastructure"
 project_purpose     = "Web Application"
 
 # ---VPC------------------------------------------------------------------------
-vpc_name        = "do-omega-pro-vpc"
-vpc_region      = "blr1"
-vpc_description = "DO Omega Pro VPC"
-vpc_ip_range    = "192.168.3.0/24"
+vpc_name              = "do-omega-pro-vpc"
+vpc_region            = "blr1"
+vpc_description       = "DO Omega Pro VPC"
+vpc_ip_range          = "192.168.3.0/24"
+vpc_destroy_wait_time = "120s"
 
 # ---DATABASES------------------------------------------------------------------
 dbs_cluster_name = "do-omega-pro-dbc"
@@ -36,22 +37,22 @@ dbs_firewall_rules = [
 dbs_db_user_name = "do-omega-pro-db-user"
 
 # ---K8S------------------------------------------------------------------------
-kub_cluster_name                   = "do-omega-pro-kub"
-kub_cluster_region                 = "blr1"
-kub_cluster_version                = "1.30.1-do.0"
-kub_cluster_auto_upgrade           = true
-kub_cluster_ha                     = false
-kub_cluster_default_node_pool_name = "do-omega-pro-default-node-pool"
-kub_cluster_default_node_pool_size = "s-1vcpu-2gb"
+dok_cluster_name                   = "do-omega-pro-kub"
+dok_cluster_region                 = "blr1"
+dok_cluster_version                = "1.30.1-do.0"
+dok_cluster_auto_upgrade           = true
+dok_cluster_ha                     = false
+dok_cluster_default_node_pool_name = "do-omega-pro-default-node-pool"
+dok_cluster_default_node_pool_size = "s-1vcpu-2gb"
 /* Auto Scaling:
-Uncomment `kub_cluster_default_node_pool_node_count` below to explicitly set the 
-node count. Comment out `kub_cluster_default_node_pool_auto_scale` in that case.
+Uncomment `dok_cluster_default_node_pool_node_count` below to explicitly set the 
+node count. Comment out `dok_cluster_default_node_pool_auto_scale` in that case.
 */
-# kub_cluster_default_node_pool_node_count     = 1
-kub_cluster_default_node_pool_auto_scale     = true
-kub_cluster_default_node_pool_min_nodes      = 1
-kub_cluster_default_node_pool_max_nodes      = 3
-kub_cluster_destroy_all_associated_resources = true
+# dok_cluster_default_node_pool_node_count     = 1
+dok_cluster_default_node_pool_auto_scale     = true
+dok_cluster_default_node_pool_min_nodes      = 1
+dok_cluster_default_node_pool_max_nodes      = 3
+dok_cluster_destroy_all_associated_resources = true
 
 # ---SOS------------------------------------------------------------------------
 spaces_access_id  = "DO00ZA23LMBP68JEV2VQ"

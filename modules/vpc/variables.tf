@@ -25,3 +25,9 @@ variable "vpc_ip_range" {
   type        = string
   description = "IP range of the VPC in CIDR notation"
 }
+
+variable "vpc_destroy_wait_time" {
+  type        = string
+  description = "Time to wait before destroying the VPC"
+  default     = "120s"
+}

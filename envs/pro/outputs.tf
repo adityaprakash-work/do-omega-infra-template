@@ -65,12 +65,12 @@ output "sos_bucket_endpoint" {
   description = "SOS bucket endpoint"
 }
 
-output "sos_cdn_origin" {
-  value       = module.sos.sos_cdn_origin
+output "sos_bucket_cdn_origin" {
+  value       = module.sos.sos_bucket_cdn_origin
   description = "SOS CDN origin"
 }
 
-output "sos_cdn_endpoint" {
-  value       = module.sos.sos_cdn_endpoint
+output "sos_bucket_cdn_endpoint" {
+  value       = module.sos.sos_bucket_cdn_endpoint
   description = "SOS CDN endpoint"
 }

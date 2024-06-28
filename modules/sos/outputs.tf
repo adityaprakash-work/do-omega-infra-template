@@ -13,12 +13,12 @@ output "sos_bucket_endpoint" {
   description = "SOS bucket endpoint"
 }
 
-output "sos_cdn_origin" {
-  value       = digitalocean_cdn.sos_cdn.origin
+output "sos_bucket_cdn_origin" {
+  value       = digitalocean_cdn.sos_bucket_cdn.origin
   description = "SOS CDN origin"
 }
 
-output "sos_cdn_endpoint" {
-  value       = digitalocean_cdn.sos_cdn.endpoint
+output "sos_bucket_cdn_endpoint" {
+  value       = digitalocean_cdn.sos_bucket_cdn.endpoint
   description = "SOS CDN endpoint"
 }

@@ -5,7 +5,7 @@ resource "digitalocean_project" "project" {
   environment = "Production"
   resources = [
     module.dbs.dbs_cluster_urn,
-    module.dok.kub_cluster_urn,
+    module.dok.dok_cluster_urn,
     module.sos.sos_bucket_urn
   ]
 }
@@ -18,12 +18,13 @@ resource "digitalocean_project" "project" {
     hence created cannot be deleted which will inturn fail `terraform destroy`.
 */
 module "vpc" {
-  source          = "../../modules/vpc"
-  do_token        = var.do_token
-  vpc_name        = var.vpc_name
-  vpc_region      = var.vpc_region
-  vpc_description = var.vpc_description
-  vpc_ip_range    = var.vpc_ip_range
+  source                = "../../modules/vpc"
+  do_token              = var.do_token
+  vpc_name              = var.vpc_name
+  vpc_region            = var.vpc_region
+  vpc_description       = var.vpc_description
+  vpc_ip_range          = var.vpc_ip_range
+  vpc_destroy_wait_time = var.vpc_destroy_wait_time
 }
 
 module "dbs" {
@@ -45,24 +46,22 @@ module "dbs" {
 module "dok" {
   source                                   = "../../modules/dok"
   do_token                                 = var.do_token
-  kub_cluster_name                         = var.kub_cluster_name
-  kub_cluster_region                       = var.kub_cluster_region
-  kub_cluster_version                      = var.kub_cluster_version
-  kub_cluster_vpc_uuid                     = module.vpc.vpc_id
-  kub_cluster_auto_upgrade                 = var.kub_cluster_auto_upgrade
-  kub_cluster_ha                           = var.kub_cluster_ha
-  kub_cluster_default_node_pool_name       = var.kub_cluster_default_node_pool_name
-  kub_cluster_default_node_pool_size       = var.kub_cluster_default_node_pool_size
-  kub_cluster_default_node_pool_node_count = var.kub_cluster_default_node_pool_node_count
-  kub_cluster_default_node_pool_auto_scale = var.kub_cluster_default_node_pool_auto_scale
+  dok_cluster_name                         = var.dok_cluster_name
+  dok_cluster_region                       = var.dok_cluster_region
+  dok_cluster_version                      = var.dok_cluster_version
+  dok_cluster_vpc_uuid                     = module.vpc.vpc_id
+  dok_cluster_auto_upgrade                 = var.dok_cluster_auto_upgrade
+  dok_cluster_ha                           = var.dok_cluster_ha
+  dok_cluster_default_node_pool_name       = var.dok_cluster_default_node_pool_name
+  dok_cluster_default_node_pool_size       = var.dok_cluster_default_node_pool_size
+  dok_cluster_default_node_pool_node_count = var.dok_cluster_default_node_pool_node_count
+  dok_cluster_default_node_pool_auto_scale = var.dok_cluster_default_node_pool_auto_scale
   depends_on                               = [module.vpc]
 }
 
 module "sos" {
   source            = "../../modules/sos"
   do_token          = var.do_token
-  spaces_access_id  = var.spaces_access_id
-  spaces_secret_key = var.spaces_secret_key
   sos_bucket_name   = var.sos_bucket_name
   sos_bucket_region = var.sos_bucket_region
   sos_bucket_acl    = var.sos_bucket_acl
